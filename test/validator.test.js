@@ -1,4 +1,4 @@
-const { validation } = require('./../classes/validator');
+const { validator } = require('./../classes/validator');
 const validations = [
     {dni: '48473442E', check: 'NIF', valid: true},
     {dni: 'X422D2242', check: 'INVALID', valid: false},
@@ -10,7 +10,7 @@ const validations = [
 ];
 describe('Checking DNI Type', () => {
     validations.forEach(test => {
-        const testType = new validation(test.dni);
+        const testType = new validator(test.dni);
         it('Check type of "' + test.dni + '" expecting "' + test.check + '"', () =>{
             expect(testType.typeDNI()).toBe(test.check);
         });
@@ -19,7 +19,7 @@ describe('Checking DNI Type', () => {
 
 describe('Checking DNI validity', () => {
     validations.forEach(test => {
-        const testType = new validation(test.dni);
+        const testType = new validator(test.dni);
         it('Check validity of "' + test.dni + '" expecting "' + test.valid + '"', () =>{
             expect(testType.isValid()).toBe(test.valid);
         });

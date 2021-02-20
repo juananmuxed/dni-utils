@@ -7,7 +7,7 @@ __Utilities to work with the Spanish DNI__
 
 ## 🥪 Install
 ```shell
-npm install @muxed/dni-utils
+$ npm install @muxed/dni-utils
 ```
 
 ## 🎉 Usage
@@ -23,6 +23,16 @@ validator.isValid(); // Return true or false if DNI is valid
 validator.typeDNI(); // Return the type of DNI (NIE or NIF) INVALID if is not valid
 validator.validSupportNumber(); // Return true or false if Support Number is valid
 validator.sanitizeSupportNumber(); // Return the Support Number (NIE) in E00000001 format
+```
+
+## 🟢 Testing
+Install the Jest dependencies if not in global
+```shell
+$ npm install
+```
+Run the tests
+```shell
+$ npm test
 ```
 
 ## 🍰 Contributing

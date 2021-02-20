@@ -100,4 +100,4 @@ class validationDNI {
     }
 }
 
-module.exports.validation = validationDNI
+module.exports.validator = validationDNI
