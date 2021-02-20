@@ -1,6 +1,6 @@
 {
     "name": "@muxed/dni-utils",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Utilities for Spanish DNI",
     "license": "MIT",
     "repository": "juananmuxed/dni-utils",
