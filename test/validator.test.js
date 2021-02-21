@@ -1,4 +1,4 @@
-const { validator } = require('./../classes/validator');
+const { validator } = require('./../src/classes/validator');
 const validations = [
     {dni: '48473442E', check: 'NIF', valid: true},
     {dni: 'X422D2242', check: 'INVALID', valid: false},
@@ -8,6 +8,7 @@ const validations = [
     {dni: 'X55555555', check: 'INVALID', valid: false},
     {dni: 'S44444444', check: 'INVALID', valid: false}
 ];
+
 describe('Checking DNI Type', () => {
     validations.forEach(test => {
         const testType = new validator(test.dni);

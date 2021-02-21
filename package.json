@@ -5,7 +5,7 @@
     "license": "MIT",
     "repository": "juananmuxed/dni-utils",
     "homepage": "https://github.com/juananmuxed/dni-utils#readme",
-    "main": "index.js",
+    "main": "./dist/dni.min.js",
     "author": "Juanan Mux <juanan.sm87@gmail.com> (https://github.com/juananmuxed)",
     "funding": {
         "type": "ko-fi",
@@ -21,9 +21,25 @@
         "dni"
     ],
     "devDependencies": {
-        "jest": "^26.6.3"
+        "@babel/core": "^7.12.17",
+        "@babel/plugin-proposal-class-properties": "^7.12.13",
+        "@babel/preset-env": "^7.12.17",
+        "babel-loader": "^8.2.2",
+        "jest": "^26.6.3",
+        "webpack": "^5.23.0",
+        "webpack-cli": "^4.5.0"
     },
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "build": "webpack --mode production",
+        "prepublish": "npm run build"
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ],
+        "plugins": [
+            "@babel/plugin-proposal-class-properties"
+        ]
     }
 }

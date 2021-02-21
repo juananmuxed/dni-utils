@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - New class to Generate DNIs
+- New class to Generate CIFs
+- Add validate CIFs to DNIs class
+
+## [v1.0.4] - 21-02-2021
+
+### Added
+
+- Webpacked and minified
 
 ## [v1.0.3] - 20-02-2021
 
@@ -17,5 +25,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First Release
 
-[Unreleased]: https://github.com/juananmuxed/dni-utils/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/juananmuxed/dni-utils/compare/v1.0.4...HEAD
+[v1.0.4]: https://github.com/juananmuxed/dni-utils/releases/tag/v1.0.4
 [v1.0.3]: https://github.com/juananmuxed/dni-utils/releases/tag/v1.0.3
