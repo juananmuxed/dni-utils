@@ -1,7 +1,7 @@
 # 🏷️ DNI Utils
 __Utilities to work with the Spanish DNI__
 
-[![npm (scoped)](https://img.shields.io/npm/v/@muxed/dni-utils.svg)](https://www.npmjs.com/package/@muxed/dni-utils) [![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@muxed/dni-utils?label=Minified%20size)](https://www.npmjs.com/package/@muxed/dni-utils) ![Coveralls github](https://img.shields.io/coveralls/github/muxed/dni-utils?label=Coverage) [![License](https://img.shields.io/github/license/juananmuxed/dni-utils?label=License)](LICENSE) 
+[![npm (scoped)](https://img.shields.io/npm/v/@muxed/dni-utils.svg?label=NPM)](https://www.npmjs.com/package/@muxed/dni-utils) [![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@muxed/dni-utils?label=Minified%20size)](https://www.npmjs.com/package/@muxed/dni-utils) [![License](https://img.shields.io/github/license/juananmuxed/dni-utils?label=License)](LICENSE) 
 
 [![Discord](https://img.shields.io/discord/324463341819133953?color=purple&label=Discord&logo=discord)](https://discord.gg/88rzwfU) 
 
