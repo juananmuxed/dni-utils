@@ -1,9 +1,14 @@
 class validationDNI {
     /* Constants */
     validChars = 'TRWAGMYFPDXBNJZSQVHLCKET';
+    cifLetters = 'JABCDEFGHI';
     nifRexp = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
     nieRexp = /^[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
+    cifRexp = /^[ABCDEFGHJKLMNPQRSUVW]{1}[0-9]{7}[0-9A-J]{1}$/i;
+    cifRexp01 = /[ABEH]/;
+    cifRexp02 = /[KPQS]/;
     supportRexp = /^[EC]{1}[1-9][0-9]{0,7}$/i;
+    noResident = '00';
     pad = '00000000';
     
     /**
@@ -35,11 +40,8 @@ class validationDNI {
      * @return {boolean} Valid Nif or Nie
      */
     isValid() {
-        if( !this.isNie() && !this.isNif) return false;
-
-        if( this.validChars.charAt( parseInt(this.nieToNif(this.sanitize(this.dni)).substr(0,8)) % 23 ) ===  this.sanitize(this.dni).substr(-1)) return true;
-        
-        return false;
+        if( !this.isNie() && !this.isNif() && !this.isCif()) return false;
+        return true;
     }
     
     /** 
@@ -72,14 +74,32 @@ class validationDNI {
      * @return {boolean} Return true if is NIF
      **/
     isNif() {
-        return this.nifRexp.test( this.sanitize( this.dni ) );
+        return this.nifRexp.test( this.sanitize( this.dni ) ) && this.validChars.charAt( parseInt(this.nieToNif(this.sanitize(this.dni)).substr(0,8)) % 23 ) ===  this.sanitize(this.dni).substr(-1);
     }
 
     /** 
-     * @return {string} Return 'NIF', 'NIE' or 'INVALID'
+     * @return {boolean} Return true if is CIF
+     **/
+    isCif() {
+        if ( !this.cifRexp.test( this.sanitize( this.dni ) ) ) return false;
+        
+        const calculation = this.dni.substr(1,7).split('').reduce( ( acc, cur, i ) => {
+            return i % 2 === 0 ? acc += parseInt(cur)*2 < 10 ? parseInt(cur)*2 : (parseInt(cur)*2) - 9 : acc += parseInt(cur);
+        }, 0);
+        const calculationDigit = (10 - (calculation).toString().substr(-1))
+        const calculationLetter = this.cifLetters.substr( calculationDigit, 1 );
+
+        if( this.dni.substr(0,1).match( this.cifRexp01 ) || this.dni.substr(1,2) == this.noResident) return this.dni.substr(8,1) == calculationDigit;
+        else if( this.dni.substr(0,1).match( this.cifRexp02 )) return this.dni.substr(8,1) == calculationLetter;
+        else return this.dni.substr(8,1) == calculationDigit || this.dni.substr(8,1) == calculationLetter;
+    }
+
+    /** 
+     * @return {string} Return 'NIF', 'NIE', 'CIF' or 'INVALID'
      **/
     typeDNI() {
         if( !this.isValid() ) return 'INVALID'
+        if( this.isCif() ) return 'CIF';
         if( this.isNie() ) return 'NIE';
         if( this.isNif() ) return 'NIF';
     }

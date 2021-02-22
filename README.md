@@ -19,11 +19,16 @@ let validator = new dni.validator('22414222P');
 // Start the class with NIE and SUPPORT NUMBER
 let validator = new dni.validator('X2414222P','E24210042');
 
-validator.isValid(); // Return true or false if DNI is valid
-validator.typeDNI(); // Return the type of DNI (NIE or NIF) INVALID if is not valid
+validator.isValid(); // Return true or false if DNI (NIE, NIF or CIF) is valid
+validator.isNif(); // Return true or false if NIF is valid
+validator.isNie(); // Return true or false if NIE is valid
+validator.isCif(); // Return true or false if CIF is valid
+validator.typeDNI(); // Return the type of DNI (NIE or NIF) or CIF and INVALID if is not valid
 validator.validSupportNumber(); // Return true or false if Support Number is valid
 validator.sanitizeSupportNumber(); // Return the Support Number (NIE) in E00000001 format
 ```
+
+IMPORTANT: Obsolete CIFs isn't supported (return INVALID)
 
 ## 🟢 Testing
 Install the Jest dependencies if not in global

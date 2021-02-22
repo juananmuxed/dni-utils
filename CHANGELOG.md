@@ -11,7 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New class to Generate DNIs
 - New class to Generate CIFs
+
+## [v1.1.0] - 22-02-2021
+
+### Added
+
 - Add validate CIFs to DNIs class
+
 
 ## [v1.0.4] - 21-02-2021
 

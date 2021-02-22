@@ -1,12 +1,13 @@
 const { validator } = require('./../src/classes/validator');
 const validations = [
-    {dni: '48473442E', check: 'NIF', valid: true},
-    {dni: 'X422D2242', check: 'INVALID', valid: false},
+    {dni: '61084710E', check: 'NIF', valid: true},
+    {dni: '61084710e', check: 'NIF', valid: true},
+    {dni: 'Z9317020R', check: 'NIE', valid: true},
     {dni: '', check: 'INVALID', valid: false},
-    {dni: '48473442', check: 'INVALID', valid: false},
-    {dni: '48473442e', check: 'NIF', valid: true},
-    {dni: 'X55555555', check: 'INVALID', valid: false},
-    {dni: 'S44444444', check: 'INVALID', valid: false}
+    {dni: 'A15357692', check: 'CIF', valid: true},
+    {dni: 'U09973447', check: 'CIF', valid: true},
+    {dni: 'N7373359D', check: 'CIF', valid: true},
+    {dni: 'hello', check: 'INVALID', valid: false}
 ];
 
 describe('Checking DNI Type', () => {
