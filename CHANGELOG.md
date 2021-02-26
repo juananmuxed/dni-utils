@@ -12,12 +12,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New class to Generate DNIs
 - New class to Generate CIFs
 
+## [v1.2.0] - 26-02-2021
+
+### Added
+
+- Add data function for CIFS return Bussines type and Province
+
 ## [v1.1.0] - 22-02-2021
 
 ### Added
 
 - Add validate CIFs to DNIs class
-
 
 ## [v1.0.4] - 21-02-2021
 
@@ -31,6 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First Release
 
-[Unreleased]: https://github.com/juananmuxed/dni-utils/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/juananmuxed/dni-utils/compare/v1.2.0...HEAD
+[v1.2.0]: https://github.com/juananmuxed/dni-utils/releases/tag/v1.2.0
+[v1.1.0]: https://github.com/juananmuxed/dni-utils/releases/tag/v1.1.0
 [v1.0.4]: https://github.com/juananmuxed/dni-utils/releases/tag/v1.0.4
 [v1.0.3]: https://github.com/juananmuxed/dni-utils/releases/tag/v1.0.3

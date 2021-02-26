@@ -7,9 +7,11 @@ class validationDNI {
     cifRexp = /^[ABCDEFGHJKLMNPQRSUVW]{1}[0-9]{7}[0-9A-J]{1}$/i;
     cifRexp01 = /[ABEH]/;
     cifRexp02 = /[KPQS]/;
-    supportRexp = /^[EC]{1}[1-9][0-9]{0,7}$/i;
+    supportRexp = /^[ECec]{1}[0-9]{0,8}$/i;
     noResident = '00';
     pad = '00000000';
+    provinces = require('./../config/provinces.json');
+    bussiness = require('./../config/btypes.json');
     
     /**
      * @param {string} dni Documento Nacional de Identidad
@@ -93,6 +95,19 @@ class validationDNI {
         else if( this.dni.substr(0,1).match( this.cifRexp02 )) return this.dni.substr(8,1) == calculationLetter;
         else return this.dni.substr(8,1) == calculationDigit || this.dni.substr(8,1) == calculationLetter;
     }
+    /** 
+     * @return {Object} Return an Object with society type and province
+     **/
+    dataNif() {
+        if( ! this.isCif() ) return false;
+        let letter = this.dni.substr(0,1), province = this.dni.substr(1,2);
+        for (let i = 0; i < this.provinces.length; i++) {
+            for (let x = 0; x < this.provinces[i].n.length; x++) {
+                if(this.provinces[i].n[x] == province ) province = this.provinces[i].p;
+            }
+        }
+        return new Object({society: this.bussiness.filter(b => b.ch == letter)[0].n, province: province})
+    }
 
     /** 
      * @return {string} Return 'NIF', 'NIE', 'CIF' or 'INVALID'
@@ -109,14 +124,14 @@ class validationDNI {
      **/
     validSupportNumber() {
         return this.supportRexp
-        .test( this.sanitize ( this.supportNumber ) )
+        .test( this.supportNumber )
     }
 
     /** 
      * @return {string} Return Support Number uppercased and filled with 0s
      **/
     sanitizeSupportNumber() {
-        return this.supportNumber ? this.supportNumber.substr(0,1) + ( (this.pad + parseInt( this.supportNumber.substr(1, this.supportNumber.length - 1) )).slice( -8 ) ) : '';
+        return this.validSupportNumber( this.supportNumber ) ? this.supportNumber.substr(0,1).toUpperCase() + ( (this.pad + parseInt( this.supportNumber.substr(1, this.supportNumber.length - 1) )).slice( -8 ) ) : '';
     }
 }
 
