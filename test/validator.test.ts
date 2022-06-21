@@ -18,7 +18,7 @@ const validCif_01 = "U99700254";
 const validCif_02 = "A00620237";
 const validCif_03 = "P7689350B";
 const validCifNoDigit = "U9970025";
-const validCifDigit = "4";
+const validCifDigit = 4;
 const invalidCif_01 = "U04971441";
 const validNie = "X5415954Y";
 const invalidNie = "75465954Y";
@@ -80,7 +80,7 @@ describe("Validator", () => {
   });
   it("should be valid CIF in dataNif", () => {
     expect((dataNif(validCif_01) as Society).province).toBe(
-      "Barcelona"
+      "Zaragoza"
     );
     expect((dataNif(validCif_01) as Society).type).toBe(
       "Unión Temporal de Empresas"
