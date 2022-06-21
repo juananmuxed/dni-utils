@@ -11,20 +11,44 @@ $ npm install @muxed/dni-utils
 ```
 
 ## 🎉 Usage
+
+Import the instaled Package
 ```js
 const dni = require('@muxed/dni-utils');
-
-// Start the class with NIF
+```
+Create a class constructor (if you need check the Support number for NIE, the second parameter acepted)
+```js
+// Start the class with DNI
 let validator = new dni.validator('22414222P');
 // Start the class with NIE and SUPPORT NUMBER
 let validator = new dni.validator('X2414222P','E24210042');
+```
 
-validator.isValid(); // Return true or false if DNI (NIE, NIF or CIF) is valid
-validator.isNif(); // Return true or false if NIF is valid
-validator.isNie(); // Return true or false if NIE is valid
-validator.isCif(); // Return true or false if CIF is valid
-validator.typeDNI(); // Return the type of DNI (NIE or NIF) or CIF and INVALID if is not valid
-validator.validSupportNumber(); // Return true or false if Support Number is valid
+### Functions availables
+Check validity (any NIE, NIF or CIF). Return `true` or `false`.
+```js
+validator.isValid();
+```
+Check validity (NIE, NIF or CIF) . Return `true` or `false`.
+```js
+validator.isNif();
+validator.isNie();
+validator.isCif();
+```
+Return an Object with society type and province. Format: `{ society: String, province: String }`
+```js
+validator.dataNif();
+```
+Return the type of DNI (`NIE`, `NIF` or `CIF`) or `INVALID`.
+```js
+validator.typeDNI();
+```
+Check Support Number (for NIE). Return `true` or `false`.
+```js
+validator.validSupportNumber();
+```
+Sanitize support number (NIE). Return formated Number `E00000001`.
+```js
 validator.sanitizeSupportNumber(); // Return the Support Number (NIE) in E00000001 format
 ```
 
