@@ -1,45 +1,43 @@
 {
-    "name": "@muxed/dni-utils",
-    "version": "1.2.0",
-    "description": "Utilities for Spanish DNI",
-    "license": "MIT",
-    "repository": "juananmuxed/dni-utils",
-    "homepage": "https://github.com/juananmuxed/dni-utils#readme",
-    "main": "./dist/dni.min.js",
-    "author": "Juanan Mux <juanan.sm87@gmail.com> (https://github.com/juananmuxed)",
-    "funding": {
-        "type": "ko-fi",
-        "url": "https://ko-fi.com/muxed"
-    },
-    "bugs": {
-        "url": "https://github.com/juananmuxed/dni-utils/issues"
-    },
-    "keywords": [
-        "spain",
-        "nie",
-        "nif",
-        "dni"
-    ],
-    "devDependencies": {
-        "@babel/core": "^7.12.17",
-        "@babel/plugin-proposal-class-properties": "^7.12.13",
-        "@babel/preset-env": "^7.12.17",
-        "babel-loader": "^8.2.2",
-        "jest": "^26.6.3",
-        "webpack": "^5.23.0",
-        "webpack-cli": "^4.5.0"
-    },
-    "scripts": {
-        "test": "jest",
-        "build": "webpack --mode production",
-        "prepare": "npm run build"
-    },
-    "babel": {
-        "presets": [
-            "@babel/preset-env"
-        ],
-        "plugins": [
-            "@babel/plugin-proposal-class-properties"
-        ]
-    }
+  "name": "@muxed/dni-utils",
+  "version": "2.0.0",
+  "description": "Utilities for Spanish DNI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juananmuxed/dni-utils.git"
+  },
+  "homepage": "https://github.com/juananmuxed/dni-utils#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Juanan Mux <juanan.sm87@gmail.com> (https://github.com/juananmuxed)",
+  "funding": {
+    "type": "ko-fi",
+    "url": "https://ko-fi.com/muxed"
+  },
+  "bugs": {
+    "url": "https://github.com/juananmuxed/dni-utils/issues"
+  },
+  "keywords": [
+    "spain",
+    "nie",
+    "nif",
+    "dni"
+  ],
+  "scripts": {
+    "start": "tsc -w",
+    "build": "tsc",
+    "test:watch": "vitest",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test",
+    "preversion": "npm run test"
+  },
+  "devDependencies": {
+    "c8": "^7.11.3",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.4",
+    "vitest": "^0.15.2"
+  }
 }

@@ -1,7 +1,7 @@
 # 🏷️ DNI Utils
 __Utilities to work with the Spanish DNI__
 
-[![npm (scoped)](https://img.shields.io/npm/v/@muxed/dni-utils.svg?label=NPM)](https://www.npmjs.com/package/@muxed/dni-utils) [![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@muxed/dni-utils?label=Minified%20size)](https://www.npmjs.com/package/@muxed/dni-utils) [![License](https://img.shields.io/github/license/juananmuxed/dni-utils?label=License)](LICENSE) 
+[![npm (scoped)](https://img.shields.io/npm/v/@muxed/dni-utils.svg?label=NPM)](https://www.npmjs.com/package/@muxed/dni-utils) [![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@muxed/dni-utils?label=Minified%20size)](https://www.npmjs.com/package/@muxed/dni-utils) [![License](https://img.shields.io/github/license/juananmuxed/dni-utils?label=License)](LICENSE) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/juananmuxed/dni-utils/Publish%20to%20NPM?label=Build&logo=npm)
 
 [![Discord](https://img.shields.io/discord/324463341819133953?color=purple&label=Discord&logo=discord)](https://discord.gg/88rzwfU) 
 
@@ -12,47 +12,32 @@ $ npm install @muxed/dni-utils
 
 ## 🎉 Usage
 
-Import the instaled Package
-```js
-const dni = require('@muxed/dni-utils');
-```
-Create a class constructor (if you need check the Support number for NIE, the second parameter acepted)
-```js
-// Start the class with DNI
-let validator = new dni.validator('22414222P');
-// Start the class with NIE and SUPPORT NUMBER
-let validator = new dni.validator('X2414222P','E24210042');
+Import the functions you want
+```ts
+import {
+  isCif,
+  isNie,
+  isNif,
+} from "./../src/modules/validator";
+
 ```
 
 ### Functions availables
-Check validity (any NIE, NIF or CIF). Return `true` or `false`.
-```js
-validator.isValid();
-```
-Check validity (NIE, NIF or CIF) . Return `true` or `false`.
-```js
-validator.isNif();
-validator.isNie();
-validator.isCif();
-```
-Return an Object with society type and province. Format: `{ society: String, province: String }`
-```js
-validator.dataNif();
-```
-Return the type of DNI (`NIE`, `NIF` or `CIF`) or `INVALID`.
-```js
-validator.typeDNI();
-```
-Check Support Number (for NIE). Return `true` or `false`.
-```js
-validator.validSupportNumber();
-```
-Sanitize support number (NIE). Return formated Number `E00000001`.
-```js
-validator.sanitizeSupportNumber(); // Return the Support Number (NIE) in E00000001 format
+```ts
+const dni = '54148871V';
+// Check validity (any NIE, NIF or CIF). Return `true` or `false`.
+isValid(dni);
+// Check validity (NIE, NIF or CIF) . Return `true` or `false`.
+isNif(dni);
+isNie(dni);
+isCif(dni);
+// Return an Object with society type and province. Format: `{ society: String, province: String }`
+dataNif(dni);
+// Return the type of DNI (`NIE`, `NIF` or `CIF`) or `INVALID`.
+typeDNI(dni);
 ```
 
-IMPORTANT: Obsolete CIFs isn't supported (return INVALID)
+__IMPORTANT__: Obsolete CIFs isn't supported (return INVALID)
 
 ## 🟢 Testing
 Install the Jest dependencies if not in global
@@ -61,7 +46,7 @@ $ npm install
 ```
 Run the tests
 ```shell
-$ npm test
+$ npm run test
 ```
 
 ## 🍰 Contributing

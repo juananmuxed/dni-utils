@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New class to Generate DNIs
 - New class to Generate CIFs
+## [v2.0.0]
+
+### Added
+
+- Auto deploy in NPM
+
+### Changed
+
+- Set typescript and delete Webpack
+- Change Jest in favor of Vitest
+### Deleted
+
+- Unnecessary support number functions for NIE
 
 ## [v1.2.0] - 26-02-2021
 
@@ -36,7 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First Release
 
-[Unreleased]: https://github.com/juananmuxed/dni-utils/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/juananmuxed/dni-utils/compare/v2.0.0...HEAD
+[v2.0.0]: https://github.com/juananmuxed/dni-utils/releases/tag/v2.0.0
 [v1.2.0]: https://github.com/juananmuxed/dni-utils/releases/tag/v1.2.0
 [v1.1.0]: https://github.com/juananmuxed/dni-utils/releases/tag/v1.1.0
 [v1.0.4]: https://github.com/juananmuxed/dni-utils/releases/tag/v1.0.4
