@@ -6,6 +6,7 @@
 # General
 src
 webpack.config.js
+tsconfig.json
 test
 
 ### macOS ###
