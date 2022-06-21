@@ -3,6 +3,11 @@ import { Constants } from "../utils/strings";
 import provinces from "./../config/provinces";
 import societyTypes from "./../config/societyTypes";
 
+export interface Society {
+  type?: string;
+  province?: string;
+}
+
 /**
  * @param {string} string String to sanitize
  * @returns {string} Sanitized String Uppercase
@@ -26,7 +31,7 @@ const nieToNif = (string: string) => {
  * @param {string} code Code to calculate
  * @return {number} Number calculated
  **/
-const calculateCifDigit = (code: string): number => {
+export const calculateCifDigit = (code: string): number => {
   const calculation = code
     .substring(1, 8)
     .split("")
@@ -75,18 +80,18 @@ export const isCif = (code: string): boolean => {
     calculationDigit,
     calculationDigit + 1
   );
+  const controlCode = code.slice(-1);
+  const isLetter = controlCode === calculationLetter;
+  const isDigit = Number(controlCode) === calculationDigit;
 
   if (
     code.substring(0, 1).match(RegularExp.CIF_EXTRA_01) ||
     code.substring(1, 3) === Constants.NO_RESIDENT
   )
-    return Number(code.substring(8, 9)) === calculationDigit;
+    return isDigit;
   if (code.substring(0, 1).match(RegularExp.CIF_EXTRA_02))
-    return code.slice(-1) === calculationLetter;
-  return (
-    Number(code.slice(-1)) === calculationDigit ||
-    code.slice(-1) === calculationLetter
-  );
+    return isLetter;
+  return isLetter || isDigit;
 };
 
 /**
@@ -95,6 +100,24 @@ export const isCif = (code: string): boolean => {
  */
 export const isValid = (code: string): boolean => {
   return isNie(code) || isNif(code) || isCif(code);
+};
+/**
+ * @param {string} code Code to test and check
+ * @return {Object} Return an Object with society type and province
+ **/
+export const dataNif = (code: string): Society | string => {
+  if (!isCif(code)) return Constants.INVALID;
+  const type = code.substring(0, 1);
+  const province = code.substring(1, 3);
+
+  const findType = societyTypes.find((prov) => prov.ch === type);
+  const findProvince = provinces.find((prov) =>
+    prov.n.includes(province)
+  );
+  return {
+    type: findType?.n,
+    province: findProvince?.p,
+  };
 };
 
 /**
@@ -106,32 +129,4 @@ export const typeDNI = (code: string): string => {
   if (isNie(code)) return Constants.NIE;
   if (isNif(code)) return Constants.NIF;
   return Constants.INVALID;
-};
-
-/**
- * @param {string|number} code Code to test
- * @return {boolean} Return true if is valid Support Number for NIEs
- **/
-export const validSupportNumber = (
-  code: string | number
-): boolean => {
-  return RegularExp.SUPPORT.test(
-    sanitizeSupportNumber(code.toString())
-  );
-};
-
-/**
- * @param {string|number} code Code to test
- * @return {string} Return Support Number uppercase and filled with 0s
- **/
-export const sanitizeSupportNumber = (
-  code: string | number
-): string => {
-  return (
-    code.toString().substr(0, 1) +
-    (
-      Constants.PAD +
-      parseInt(code.toString().substr(1, code.toString().length - 1))
-    ).slice(-8)
-  );
 };
