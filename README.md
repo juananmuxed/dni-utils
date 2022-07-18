@@ -22,7 +22,8 @@ import {
 
 ```
 
-### Functions availables
+### Functions available
+
 ```ts
 const dni = '54148871V';
 // Check validity (any NIE, NIF or CIF). Return `true` or `false`.
