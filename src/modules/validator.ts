@@ -20,7 +20,7 @@ const sanitize = (string: string): string => {
  * @param {string} string String to convert
  * @return {string} NIE converted to NIF to check
  **/
-const nieToNif = (string: string) => {
+const nieToNif = (string: string): string => {
   return string
     .replace(/^[X]/, "0")
     .replace(/^[Y]/, "1")
