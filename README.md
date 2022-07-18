@@ -22,7 +22,7 @@ import {
 
 ```
 
-### Functions available
+## Functions available
 
 ```ts
 const dni = '54148871V';
